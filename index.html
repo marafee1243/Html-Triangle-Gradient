@@ -1,0 +1,185 @@
+<doctype html>
+<html>
+<head>
+	<title>Triangle</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.5' name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+
+<style>
+body{
+	overflow:hidden;
+	margin:0px;
+	padding:0px;
+
+}
+.box {
+	/* background: #FFE1BF; */
+	background: white;
+	position: relative;
+	float:left;
+	
+	
+}
+.tr {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	/* padding: 1px; */
+}
+
+.tr-1 {
+	border-width: 20px 40px 0 0;
+}
+.tr-2 {
+	border-width: 20px 40px 20px 0;
+	margin-top: -20px;
+}
+.tr-3 {
+	border-width: 20px 0 20px 40px;
+	margin-top: -20px;
+}
+.tr-4 {
+	border-width: 20px 40px 20px 0;
+	margin-top: -20px;
+}
+.tr-5 {
+	border-width: 20px 0 0 40px;
+	margin-top: -20px;
+}
+.tr-6 {
+	border-width: 0 40px 20px 0;
+}
+.tr-7 {
+	border-width: 20px 0 20px 40px;
+	margin-top: -20px;
+}
+.tr-8 {
+	border-width: 20px 40px 20px 0;
+	margin-top: -20px;
+}
+.tr-9 {
+	border-width: 20px 0 20px 40px;
+	margin-top: -20px;
+}
+.tr-10 {
+	border-width: 0 0 20px 40px;
+	margin-top: -20px;
+}
+
+
+</style>
+
+
+</head>
+<body>
+</body>
+</html>
+<script src="jquery.js" ></script>	
+
+<script>
+	/* disabling touch scrolling for all mobile devices */
+	/* http://stackoverflow.com/questions/10592411/disable-scrolling-in-all-mobile-devices */
+	document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
+</script>
+
+<script>
+$(document).ready(function(){
+
+	var json_colors = ["#6D8397","#6B5853","#5FB7B9","#95B3AD","#5EB7BC","#52B2B8","#FFE1BF","#959C99","#B9B5AB","#5D9699","#73C0BE","#795340","#C0BAAF","#9C6F61","#3B98B8","#293D4F"];
+	var len = json_colors.length;
+	var rlen = len - 1;
+
+	var height =  window.innerHeight;
+	var width =  window.innerWidth;
+	var area = height * width;
+	
+	var boxHeight = 80;
+	var boxWidth = 40;
+	var boxArea = boxHeight * boxWidth;
+	
+	var box_count = Math.floor(area / boxArea);
+	var row_count = Math.floor(height / boxHeight);
+	var column_count = Math.floor(width / boxWidth);
+	
+	box_count += 50;
+	
+	/* coloring each triangle starts here */
+	for (i = 1; i<= box_count; i++) {
+		var newBoxId = "box_" + i;
+		$("body").append("<div id="+newBoxId+" class='box box-"+i+"'></div>");
+		
+		var newTriangleId = "tr_" + i;
+		
+		var rand = Math.floor((Math.random() * rlen) + 0);
+		var rand_color = json_colors[rand];
+		
+		
+		var k = i;
+		if (k % 2 == 0) {
+			// Its Even type of box
+			
+			var newElementTriangle = "";
+			
+			newElementTriangle += "<div class='tr tr-1' style='border-color: "+rand_color+" transparent transparent transparent;' ></div>";
+			
+			rand = Math.floor((Math.random() * rlen) + 0);
+			rand_color = json_colors[rand];
+			
+			newElementTriangle += "<div class='tr tr-2' style='border-color: transparent "+rand_color+" transparent transparent;' ></div>";
+			
+			rand = Math.floor((Math.random() * rlen) + 0);
+			rand_color = json_colors[rand];
+			
+			newElementTriangle += "<div class='tr tr-3' style='border-color: transparent transparent transparent "+rand_color+";' ></div>";
+			
+			rand = Math.floor((Math.random() * rlen) + 0);
+			rand_color = json_colors[rand];
+			
+			newElementTriangle += "<div class='tr tr-4' style='border-color: transparent "+rand_color+" transparent transparent;' ></div>";
+			
+			rand = Math.floor((Math.random() * rlen) + 0);
+			rand_color = json_colors[rand];
+			
+			newElementTriangle += "<div class='tr tr-5' style='border-color: transparent transparent transparent "+rand_color+";' ></div>";
+			
+		} else {
+			// Its Odd type of box
+			
+			var newElementTriangle = "";
+			
+			newElementTriangle += "<div class='tr tr-6' style='border-color: transparent "+rand_color+" transparent transparent;' ></div>";
+			
+			rand = Math.floor((Math.random() * rlen) + 0);
+			rand_color = json_colors[rand];
+			
+			newElementTriangle += "<div class='tr tr-7' style='border-color: transparent transparent transparent "+rand_color+";' ></div>";
+			
+			rand = Math.floor((Math.random() * rlen) + 0);
+			rand_color = json_colors[rand];
+			
+			newElementTriangle += "<div class='tr tr-8' style='border-color: transparent "+rand_color+" transparent transparent;' ></div>";
+			
+			rand = Math.floor((Math.random() * rlen) + 0);
+			rand_color = json_colors[rand];
+			
+			newElementTriangle += "<div class='tr tr-9' style='border-color: transparent transparent transparent "+rand_color+";' ></div>";
+			
+			rand = Math.floor((Math.random() * rlen) + 0);
+			rand_color = json_colors[rand];
+			
+			newElementTriangle += "<div class='tr tr-10' style='border-color: transparent transparent "+rand_color+" transparent;' ></div>";
+			
+		}
+		
+		$("#"+newBoxId).append(newElementTriangle);
+	}
+	/* coloring each triangle ends here */
+	
+
+		
+});
+
+</script>
+
+
